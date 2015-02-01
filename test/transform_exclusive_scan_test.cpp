@@ -22,7 +22,7 @@
 
 namespace ba = boost::algorithm;
 
-int triangle(int n) { return n*(n+1)/2; }
+int triangle(size_t n) { return static_cast<int>(n*(n+1)/2); }
 
 template <class _Tp>
 struct identity
@@ -38,14 +38,14 @@ test(Iter1 first, Iter1 last, BOp bop, UOp uop, T init, Iter2 rFirst, Iter2 rLas
     std::vector<typename std::iterator_traits<Iter1>::value_type> v;
 //  Test not in-place
     ba::transform_exclusive_scan(first, last, std::back_inserter(v), init, bop, uop);
-    BOOST_CHECK(std::distance(rFirst, rLast) == v.size());
+    BOOST_CHECK(static_cast<size_t>(std::distance(rFirst, rLast)) == v.size());
     BOOST_CHECK(std::equal(v.begin(), v.end(), rFirst));
 
 //  Test in-place
     v.clear();
     v.assign(first, last);
     ba::transform_exclusive_scan(v.begin(), v.end(), v.begin(), init, bop, uop);
-    BOOST_CHECK(std::distance(rFirst, rLast) == v.size());
+    BOOST_CHECK(static_cast<size_t>(std::distance(rFirst, rLast)) == v.size());
     BOOST_CHECK(std::equal(v.begin(), v.end(), rFirst));
 }
 

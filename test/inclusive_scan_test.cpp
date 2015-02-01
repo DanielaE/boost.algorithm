@@ -23,7 +23,7 @@
 
 namespace ba = boost::algorithm;
 
-int triangle(int n) { return n*(n+1)/2; }
+int triangle(size_t n) { return static_cast<int>(n*(n+1)/2); }
 
 void basic_tests_op()
 {

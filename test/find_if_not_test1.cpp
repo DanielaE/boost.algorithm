@@ -22,8 +22,8 @@
 namespace ba = boost::algorithm;
 // namespace ba = boost;
 
-BOOST_CXX14_CONSTEXPR bool is_true  ( int v ) { return true; }
-BOOST_CXX14_CONSTEXPR bool is_false ( int v ) { return false; }
+BOOST_CXX14_CONSTEXPR bool is_true  ( int ) { return true; }
+BOOST_CXX14_CONSTEXPR bool is_false ( int ) { return false; }
 BOOST_CXX14_CONSTEXPR bool is_not_three ( int v ) { return v != 3; }
 
 BOOST_CXX14_CONSTEXPR bool check_constexpr() {
