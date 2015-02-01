@@ -79,7 +79,12 @@ void test_ints()
     BOOST_CHECK_EQUAL (  1U, ba::clamp (  0U, 1,  10 ));
     BOOST_CHECK_EQUAL ( 10U, ba::clamp ( 10U, 1,  10 ));
     BOOST_CHECK_EQUAL ( 10U, ba::clamp ( 15U, 1,  10 ));
-    
+
+#ifdef BOOST_MSVC
+#pragma warning(push)
+#pragma warning(disable: 4244 4305 4309) // narrowing conversion/truncation
+#endif
+
 //  Mixed (3)
     BOOST_CHECK_EQUAL (  5U, ba::clamp (  5U, 1,  10. ));
     BOOST_CHECK_EQUAL (  1U, ba::clamp (  1U, 1,  10. ));
@@ -90,6 +95,10 @@ void test_ints()
     short foo = 50;
     BOOST_CHECK_EQUAL ( 56,     ba::clamp ( foo, 56.9, 129 ));
     BOOST_CHECK_EQUAL ( 24910,  ba::clamp ( foo, 12345678, 123456999 ));
+
+#ifdef BOOST_MSVC
+#pragma warning(pop)
+#endif
     }
 
 
