@@ -193,7 +193,7 @@ void test_minmax(CIterator first, CIterator last, int n)
 
 template <class Container, class Iterator, class Value>
 void test_container(Iterator first, Iterator last, int n,
-                    Container* dummy = 0
+                    Container* = 0
                     BOOST_APPEND_EXPLICIT_TEMPLATE_TYPE(Value) )
 {
   Container c(first, last);
