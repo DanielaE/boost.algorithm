@@ -47,6 +47,8 @@ namespace boost { namespace algorithm { namespace detail {
         const value_type k_default_value;
         skip_map skip_;
         
+        skip_table & operator= (const skip_table &);
+
     public:
         skip_table ( std::size_t patSize, value_type default_value ) 
             : k_default_value ( default_value ), skip_ ( patSize ) {}
@@ -78,6 +80,8 @@ namespace boost { namespace algorithm { namespace detail {
         typedef boost::array<value_type, 1U << (CHAR_BIT * sizeof(key_type))> skip_map;
         skip_map skip_;
         const value_type k_default_value;
+
+        skip_table & operator= (const skip_table &);
     public:
         skip_table ( std::size_t /*patSize*/, value_type default_value ) : k_default_value ( default_value ) {
             std::fill_n ( skip_.begin(), skip_.size(), default_value );

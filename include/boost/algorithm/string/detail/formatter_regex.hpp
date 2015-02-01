@@ -49,6 +49,8 @@ namespace boost {
                     }
                 }
             private:
+                regex_formatF& operator=(const regex_formatF&);
+
                 const StringT& m_Fmt;
                 match_flag_type m_Flags;
             };
