@@ -46,6 +46,8 @@ namespace boost {
       bool operator()(Iterator const& it1,
                       Iterator const& it2) const { return m_p(*it1, *it2); }
     private:
+      binary_pred_over_iter& operator=(const binary_pred_over_iter&);
+
       BinaryPredicate m_p;
     };
 

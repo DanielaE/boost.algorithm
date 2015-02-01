@@ -111,6 +111,8 @@ namespace boost {
                 }
 
             private:
+                find_regexF& operator=(const find_regexF&);
+
                 regex_reference_type m_Rx; // Regexp
                 match_flag_type m_MatchFlags;     // match flags
             };
