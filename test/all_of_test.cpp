@@ -37,7 +37,7 @@ void test_all ()
     std::vector<int> vi(some_numbers, some_numbers + 5);
     std::list<int>   li(vi.begin(), vi.end ());
     
-    int some_letters[] = { 'a', 'q', 'n', 'y', 'n' };
+    char some_letters[] = { 'a', 'q', 'n', 'y', 'n' };
     std::vector<char> vc(some_letters, some_letters + 5);
     
     

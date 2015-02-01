@@ -22,7 +22,7 @@
 
 namespace ba = boost::algorithm;
 
-int triangle(int n) { return n*(n+1)/2; }
+int triangle(size_t n) { return static_cast<int>(n*(n+1)/2); }
 
 template <class _Tp>
 struct identity
@@ -33,19 +33,19 @@ struct identity
 
 template <class Iter1, class BOp, class UOp, class Iter2>
 void
-transform_inclusive_scan_test(Iter1 first, Iter1 last, BOp bop, UOp uop, Iter2 rFirst, Iter2 rLast)
+transform_inclusive_scan_test(Iter1 first, Iter1 last, BOp bop, UOp uop, Iter2 rFirst, Iter2 /* rLast */)
 {
     std::vector<typename std::iterator_traits<Iter1>::value_type> v;
 //  Test not in-place
     ba::transform_inclusive_scan(first, last, std::back_inserter(v), bop, uop);
-    BOOST_CHECK(std::distance(first, last) == v.size());
+    BOOST_CHECK(static_cast<size_t>(std::distance(first, last)) == v.size());
     BOOST_CHECK(std::equal(v.begin(), v.end(), rFirst));
 
 //  Test in-place
     v.clear();
     v.assign(first, last);
     ba::transform_inclusive_scan(v.begin(), v.end(), v.begin(), bop, uop);
-    BOOST_CHECK(std::distance(first, last) == v.size());
+    BOOST_CHECK(static_cast<size_t>(std::distance(first, last)) == v.size());
     BOOST_CHECK(std::equal(v.begin(), v.end(), rFirst));
 }
 
@@ -129,14 +129,14 @@ transform_inclusive_scan_init_test(Iter1 first, Iter1 last, BOp bop, UOp uop, T 
     std::vector<typename std::iterator_traits<Iter1>::value_type> v;
 //  Test not in-place
     ba::transform_inclusive_scan(first, last, std::back_inserter(v), bop, uop, init);
-    BOOST_CHECK(std::distance(rFirst, rLast) == v.size());
+    BOOST_CHECK(static_cast<size_t>(std::distance(rFirst, rLast)) == v.size());
     BOOST_CHECK(std::equal(v.begin(), v.end(), rFirst));
 
 //  Test in-place
     v.clear();
     v.assign(first, last);
     ba::transform_inclusive_scan(v.begin(), v.end(), v.begin(), bop, uop, init);
-    BOOST_CHECK(std::distance(rFirst, rLast) == v.size());
+    BOOST_CHECK(static_cast<size_t>(std::distance(rFirst, rLast)) == v.size());
     BOOST_CHECK(std::equal(v.begin(), v.end(), rFirst));
 }
 
