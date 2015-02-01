@@ -39,14 +39,15 @@ namespace boost { namespace algorithm
 template<typename RandomAccessIterator1, typename RandomAccessIterator2>
 void
 apply_permutation(RandomAccessIterator1 item_begin, RandomAccessIterator1 item_end,
-                  RandomAccessIterator2 ind_begin, RandomAccessIterator2 ind_end)
+                  RandomAccessIterator2 ind_begin, RandomAccessIterator2 /* ind_end */)
 {
     using Diff = typename std::iterator_traits<RandomAccessIterator1>::difference_type;
+    using Val = typename std::iterator_traits<RandomAccessIterator1>::value_type;
     using std::swap;
     Diff size = std::distance(item_begin, item_end);
     for (Diff i = 0; i < size; i++)
     {
-        auto current = i;
+        auto current = static_cast<Val>(i);
         while (i != ind_begin[current])
         {
             auto next = ind_begin[current];
@@ -73,7 +74,7 @@ apply_reverse_permutation(
         RandomAccessIterator1 item_begin,
         RandomAccessIterator1 item_end,
         RandomAccessIterator2 ind_begin,
-        RandomAccessIterator2 ind_end)
+        RandomAccessIterator2 /* ind_end */)
 {
     using Diff = typename std::iterator_traits<RandomAccessIterator2>::difference_type;
     using std::swap;

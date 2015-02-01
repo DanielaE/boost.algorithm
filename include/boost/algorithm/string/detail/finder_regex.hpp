@@ -111,6 +111,9 @@ namespace boost {
                 }
 
             private:
+#if BOOST_WORKAROUND(BOOST_MSVC, < 1900)
+                find_regexF & operator=(const find_regexF &);
+#endif
                 regex_reference_type m_Rx; // Regexp
                 match_flag_type m_MatchFlags;     // match flags
             };
