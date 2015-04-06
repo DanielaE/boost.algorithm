@@ -78,6 +78,8 @@ struct less_count : std::less<Value> {
     m_counter = 0;
   }
 private:
+  less_count& operator=(const less_count&);
+
   int& m_counter;
 };
 
@@ -183,7 +185,7 @@ void test_minmax(CIterator first, CIterator last, int n)
 
 template <class Container, class Iterator, class Value>
 void test_container(Iterator first, Iterator last, int n,
-                    Container* dummy = 0
+                    Container* = 0
                     BOOST_APPEND_EXPLICIT_TEMPLATE_TYPE(Value) )
 {
   Container c(first, last);
