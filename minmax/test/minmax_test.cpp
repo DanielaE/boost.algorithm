@@ -43,6 +43,8 @@ struct less_count : std::less<Value> {
     m_counter = 0;
   }
 private:
+  less_count& operator=(const less_count&);
+
   int& m_counter;
 };
 
