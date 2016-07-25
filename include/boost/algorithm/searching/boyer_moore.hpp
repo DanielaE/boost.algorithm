@@ -57,8 +57,8 @@ Requirements:
         typedef typename std::iterator_traits<patIter>::difference_type difference_type;
     public:
         boyer_moore ( patIter first, patIter last ) 
-                : pat_first ( first ), pat_last ( last ),
-                  k_pattern_length ( std::distance ( pat_first, pat_last )),
+                : pattern_first ( first ), pattern_last ( last ),
+                  k_pattern_length ( std::distance ( pattern_first, pattern_last )),
                   skip_ ( k_pattern_length, -1 ),
                   suffix_ ( k_pattern_length + 1 )
             {
@@ -80,8 +80,8 @@ Requirements:
                                     typename std::iterator_traits<patIter>::value_type, 
                                     typename std::iterator_traits<corpusIter>::value_type>::value ));
 
-            if ( corpus_first == corpus_last ) return corpus_last;  // if nothing to search, we didn't find it!
-            if (    pat_first ==    pat_last ) return corpus_first; // empty pattern matches at start
+            if ( corpus_first  == corpus_last  ) return corpus_last;  // if nothing to search, we didn't find it!
+            if ( pattern_first == pattern_last ) return corpus_first; // empty pattern matches at start
 
             const difference_type k_corpus_length  = std::distance ( corpus_first, corpus_last );
         //  If the pattern is larger than the corpus, we can't find it!
@@ -99,7 +99,7 @@ Requirements:
 
     private:
 /// \cond DOXYGEN_HIDE
-        patIter pat_first, pat_last;
+        patIter pattern_first, pattern_last;
         const difference_type k_pattern_length;
         typename traits::skip_table_t skip_;
         std::vector <difference_type> suffix_;
@@ -122,7 +122,7 @@ Requirements:
         /*  while ( std::distance ( curPos, corpus_last ) >= k_pattern_length ) { */
             //  Do we match right where we are?
                 j = k_pattern_length;
-                while ( pat_first [j-1] == curPos [j-1] ) {
+                while ( pattern_first [j-1] == curPos [j-1] ) {
                     j--;
                 //  We matched - we're done!
                     if ( j == 0 )
