@@ -14,6 +14,7 @@ Try ostream_iterators
 
 #define BOOST_TEST_MAIN
 #include <boost/test/unit_test.hpp>
+#include <boost/exception/get_error_info.hpp>
 
 #include <string>
 #include <iostream>
