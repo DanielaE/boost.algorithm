@@ -5,32 +5,35 @@
 
 require-b2 5.2 ;
 
+constant boost_dependencies :
+    /boost/array//boost_array
+    /boost/assert//boost_assert
+    /boost/bind//boost_bind
+    /boost/concept_check//boost_concept_check
+    /boost/config//boost_config
+    /boost/core//boost_core
+    /boost/exception//boost_exception
+    /boost/function//boost_function
+    /boost/iterator//boost_iterator
+    /boost/mpl//boost_mpl
+    /boost/range//boost_range
+    /boost/regex//boost_regex
+    /boost/static_assert//boost_static_assert
+    /boost/throw_exception//boost_throw_exception
+    /boost/tuple//boost_tuple
+    /boost/type_traits//boost_type_traits
+    /boost/unordered//boost_unordered ;
+
 project /boost/algorithm
     : common-requirements
-        <library>/boost/array//boost_array
-        <library>/boost/assert//boost_assert
-        <library>/boost/bind//boost_bind
-        <library>/boost/concept_check//boost_concept_check
-        <library>/boost/config//boost_config
-        <library>/boost/core//boost_core
-        <library>/boost/exception//boost_exception
-        <library>/boost/function//boost_function
-        <library>/boost/iterator//boost_iterator
-        <library>/boost/mpl//boost_mpl
-        <library>/boost/range//boost_range
-        <library>/boost/regex//boost_regex
-        <library>/boost/static_assert//boost_static_assert
-        <library>/boost/throw_exception//boost_throw_exception
-        <library>/boost/tuple//boost_tuple
-        <library>/boost/type_traits//boost_type_traits
-        <library>/boost/unordered//boost_unordered
         <include>include
     ;
 
 explicit
-    [ alias boost_algorithm ]
+    [ alias boost_algorithm : : : : <library>$(boost_dependencies) ]
     [ alias all : boost_algorithm example test string/example string/test ]
     ;
 
 call-if : boost-library algorithm
     ;
+
