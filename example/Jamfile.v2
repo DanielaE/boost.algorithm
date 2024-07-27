@@ -10,6 +10,7 @@
 
 project
     : requirements
+      <library>/boost/algorithm//boost_algorithm
       <optimization>speed
       <toolset>msvc:<define>_SCL_SECURE_NO_WARNINGS
       <toolset>msvc:<define>NOMINMAX

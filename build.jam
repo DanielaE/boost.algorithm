@@ -31,9 +31,12 @@ project /boost/algorithm
 
 explicit
     [ alias boost_algorithm : : : : <library>$(boost_dependencies) ]
-    [ alias all : boost_algorithm example test string/example string/test ]
+    [ alias all : boost_algorithm test
+        example
+        minmax/example minmax/test
+        string/example string/test
+        ]
     ;
 
 call-if : boost-library algorithm
     ;
-
