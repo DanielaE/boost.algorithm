@@ -7,7 +7,10 @@
 # http://www.boost.org/LICENSE_1_0.txt)
 #
 
-project : requirements <library>/boost/algorithm//boost_algorithm ;
+project
+    : requirements
+        <library>/boost/algorithm//boost_algorithm
+        <library>/boost/timer//boost_timer ;
 
 exe minmax_ex : minmax_ex.cpp ;
 exe minmax_timer : minmax_timer.cpp ;
