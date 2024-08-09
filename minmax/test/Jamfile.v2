@@ -13,7 +13,7 @@ project : requirements <library>/boost/algorithm//boost_algorithm ;
 
 alias unit_test_framework
     : # sources
-        /boost/test//unit_test_framework
+        /boost/test//boost_unit_test_framework
     ;
 
 {
